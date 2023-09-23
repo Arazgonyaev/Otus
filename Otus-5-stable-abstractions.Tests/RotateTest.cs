@@ -13,7 +13,7 @@ namespace Otus_5_stable_abstractions
         public void RotateSimpleObject()
         {
             // Arrange
-            var ship = new Ship(position:(0, 0), velocity: (0, 0), direction: 45, angularVelocity: -90);
+            var ship = new Ship(position: new[]{0, 0}, velocity: new[]{0, 0}, direction: 45, angularVelocity: -90);
             
             // Act
             new Rotate(ship).Execute();
@@ -26,7 +26,7 @@ namespace Otus_5_stable_abstractions
         public void RotateUniversalObject()
         {
             // Arrange
-            var ship = new UShip(position:(0, 0), velocity: (0, 0), direction: 45, angularVelocity: -(90+360));
+            var ship = new UShip(position: new[]{0, 0}, velocity: new[]{0, 0}, direction: 45, angularVelocity: -(90+360));
             
             // Act
             new Rotate(new RotatableAdapter(ship)).Execute();
@@ -39,7 +39,7 @@ namespace Otus_5_stable_abstractions
         public void RotateNonDirectionableObject()
         {
             // Arrange
-            var ship = new NonDirectionableShip(position:(0, 0), velocity: (0, 0), direction: 45, angularVelocity: -90);
+            var ship = new NonDirectionableShip(position: new[]{0, 0}, velocity: new[]{0, 0}, direction: 45, angularVelocity: -90);
             
             // Assert
             Assert.ThrowsException<ArgumentException>(() => new Rotate(new RotatableAdapter(ship)).Execute());
@@ -49,7 +49,7 @@ namespace Otus_5_stable_abstractions
         public void RotateNonAngularVelocitibleObject()
         {
             // Arrange
-            var ship = new NonAngularVelocitibleShip(position:(0, 0), velocity: (0, 0), direction: 45, angularVelocity: -90);
+            var ship = new NonAngularVelocitibleShip(position: new[]{0, 0}, velocity: new[]{0, 0}, direction: 45, angularVelocity: -90);
             
             // Assert
             Assert.ThrowsException<ArgumentException>(() => new Rotate(new RotatableAdapter(ship)).Execute());
@@ -59,7 +59,7 @@ namespace Otus_5_stable_abstractions
         public void RotateNonRotatableObject()
         {
             // Arrange
-            var ship = new NonRotatableShip(position:(0, 0), velocity: (0, 0), direction: 45, angularVelocity: -90);
+            var ship = new NonRotatableShip(position: new[]{0, 0}, velocity: new[]{0, 0}, direction: 45, angularVelocity: -90);
             
             // Assert
             Assert.ThrowsException<ArgumentException>(() => new Rotate(new RotatableAdapter(ship)).Execute());

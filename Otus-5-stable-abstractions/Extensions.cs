@@ -1,8 +1,10 @@
-﻿namespace Otus_5_stable_abstractions
+﻿using System.Linq;
+
+namespace Otus_5_stable_abstractions
 {
     public static class Extensions
     {
-        public static (int, int) Plus(this (int, int) a, (int, int) b) =>
-            (a.Item1 + b.Item1, a.Item2 + b.Item2);
+        public static int[] Plus(this int[] a, int[] b) =>
+            a.Zip(b, (x, y) => x + y).ToArray();
     }
 }
