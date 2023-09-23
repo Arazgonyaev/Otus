@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Otus_5_stable_abstractions</RootNamespace>
+  </PropertyGroup>
+
+
+
+
+</Project>
