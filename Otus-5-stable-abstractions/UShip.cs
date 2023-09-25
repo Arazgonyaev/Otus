@@ -5,13 +5,13 @@ namespace Otus_5_stable_abstractions;
 
 public class UShip : IUObject
 {
-    protected (int, int) Position;
-    protected (int, int) Velocity;
+    protected int[] Position;
+    protected int[] Velocity;
     protected int Direction;
     protected readonly int AngularVelocity;
     protected readonly int DirectionsCount;
     
-    public UShip((int, int) position, (int, int) velocity, int direction, int angularVelocity, int directionsCount = 360)
+    public UShip(int[] position, int[] velocity, int direction, int angularVelocity, int directionsCount = 360)
     {
         Position = position;
         Velocity = velocity;
@@ -38,7 +38,7 @@ public class UShip : IUObject
         switch (name)
         {
             case "Position":
-                Position = GetCorrectValue<(int, int)>(value);
+                Position = GetCorrectValue<int[]>(value);
                 break;
             case "Direction":
                 Direction = GetCorrectValue<int>(value);

@@ -4,7 +4,7 @@ namespace Otus_5_stable_abstractions.TestObjects;
 
 public class NonRotatableShip : UShip
 {
-    public NonRotatableShip((int, int) position, (int, int) velocity, int direction, int angularVelocity, int directionsCount = 360) 
+    public NonRotatableShip(int[] position, int[] velocity, int direction, int angularVelocity, int directionsCount = 360) 
         : base(position, velocity, direction, angularVelocity, directionsCount)
     {
     }
@@ -14,7 +14,7 @@ public class NonRotatableShip : UShip
         switch (name)
         {
             case "Position":
-                Position = GetCorrectValue<(int, int)>(value);
+                Position = GetCorrectValue<int[]>(value);
                 break;
             case "Direction":
                 throw new ArgumentException($"Incorrect property name '{name}' for {GetType().Name}");

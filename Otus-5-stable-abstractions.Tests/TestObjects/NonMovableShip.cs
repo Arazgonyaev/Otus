@@ -4,7 +4,7 @@ namespace Otus_5_stable_abstractions.TestObjects;
 
 public class NonMovableShip : UShip
 {
-    public NonMovableShip((int, int) position, (int, int) velocity, int direction, int angularVelocity, int directionsCount = 360) 
+    public NonMovableShip(int[] position, int[] velocity, int direction, int angularVelocity, int directionsCount = 360) 
         : base(position, velocity, direction, angularVelocity, directionsCount)
     {
     }

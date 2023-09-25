@@ -12,18 +12,18 @@ namespace Otus_5_stable_abstractions.Adapters
             _uObject = uObject;
         }
 
-        public (int, int) Position {
+        public int[] Position {
             get => GetPropertyValue("Position");
             set => _uObject.SetProperty("Position", value);
         }
-        public (int, int) Velocity => GetPropertyValue("Velocity");
+        public int[] Velocity => GetPropertyValue("Velocity");
 
-        private (int, int) GetPropertyValue(string propertyName)
+        private int[] GetPropertyValue(string propertyName)
         {
             var value = _uObject.GetProperty(propertyName);
             
-            if (value is (int, int))
-                return ((int, int))value;
+            if (value is int[] i)
+                return i;
             
             throw new ArgumentException($"Incorrect property value type for {propertyName}");
         }

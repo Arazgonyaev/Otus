@@ -2,7 +2,7 @@
 {
     public interface IMovable
     {
-        (int, int) Position { get; set; }
-        (int, int) Velocity { get; }
+        int[] Position { get; set; }
+        int[] Velocity { get; }
     }
 }
