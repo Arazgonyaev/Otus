@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Otus_5_stable_abstractions.Actions;
 using Otus_5_stable_abstractions.Adapters;
@@ -26,7 +27,14 @@ namespace Otus_5_stable_abstractions
         public void RotateUniversalObject()
         {
             // Arrange
-            var ship = new UShip(position: new[]{0, 0}, velocity: new[]{0, 0}, direction: 45, angularVelocity: -(90+360));
+            var ship = new UShip(
+                new Dictionary<string, object>
+                {
+                    {"Position", new[]{0, 0}},
+                    {"Velocity", new[]{0, 0}},
+                    {"Direction", 45},
+                    {"AngularVelocity", -(90+360)}
+                });
             
             // Act
             new Rotate(new RotatableAdapter(ship)).Execute();
@@ -39,8 +47,14 @@ namespace Otus_5_stable_abstractions
         public void RotateNonDirectionableObject()
         {
             // Arrange
-            var ship = new NonDirectionableShip(position: new[]{0, 0}, velocity: new[]{0, 0}, direction: 45, angularVelocity: -90);
-            
+            var ship = new UShip(
+                new Dictionary<string, object>
+                {
+                    {"Position", new[]{0, 0}},
+                    {"Velocity", new[]{0, 0}},
+                    {"AngularVelocity", -(90+360)}
+                });
+
             // Assert
             Assert.ThrowsException<ArgumentException>(() => new Rotate(new RotatableAdapter(ship)).Execute());
         }
@@ -49,8 +63,14 @@ namespace Otus_5_stable_abstractions
         public void RotateNonAngularVelocitibleObject()
         {
             // Arrange
-            var ship = new NonAngularVelocitibleShip(position: new[]{0, 0}, velocity: new[]{0, 0}, direction: 45, angularVelocity: -90);
-            
+            var ship = new UShip(
+                new Dictionary<string, object>
+                {
+                    {"Position", new[]{0, 0}},
+                    {"Velocity", new[]{0, 0}},
+                    {"Direction", 45},
+                });
+
             // Assert
             Assert.ThrowsException<ArgumentException>(() => new Rotate(new RotatableAdapter(ship)).Execute());
         }
@@ -59,7 +79,13 @@ namespace Otus_5_stable_abstractions
         public void RotateNonRotatableObject()
         {
             // Arrange
-            var ship = new NonRotatableShip(position: new[]{0, 0}, velocity: new[]{0, 0}, direction: 45, angularVelocity: -90);
+            var ship = new NonRotatableShip(new Dictionary<string, object>
+                {
+                    {"Position", new[]{0, 0}},
+                    {"Velocity", new[]{0, 0}},
+                    {"Direction", 45},
+                    {"AngularVelocity", -(90+360)}
+                });
             
             // Assert
             Assert.ThrowsException<ArgumentException>(() => new Rotate(new RotatableAdapter(ship)).Execute());
