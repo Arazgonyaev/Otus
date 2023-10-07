@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Otus_5_stable_abstractions.Actions;
 using Otus_5_stable_abstractions.Adapters;
@@ -26,7 +27,14 @@ namespace Otus_5_stable_abstractions
         public void MoveUniversalObject()
         {
             // Arrange
-            var ship = new UShip(position: new[]{12, 5}, velocity: new[]{-7, 3}, direction: 0, angularVelocity: 0);
+            var ship = new UShip(
+                new Dictionary<string, object>
+                {
+                    {"Position", new[]{12, 5}},
+                    {"Velocity", new[]{-7, 3}},
+                    {"Direction", 0},
+                    {"AngularVelocity", 0}
+                });
             
             // Act
             new Move(new MovableAdapter(ship)).Execute();
@@ -39,8 +47,14 @@ namespace Otus_5_stable_abstractions
         public void MoveNonPositionableObject()
         {
             // Arrange
-            var ship = new NonPositionableShip(position: new[]{12, 5}, velocity: new[]{-7, 3}, direction: 0, angularVelocity: 0);
-            
+            var ship = new UShip(
+                new Dictionary<string, object>
+                {
+                    {"Velocity", new[]{-7, 3}},
+                    {"Direction", 0},
+                    {"AngularVelocity", 0}
+                });
+
             // Assert
             Assert.ThrowsException<ArgumentException>(() => new Move(new MovableAdapter(ship)).Execute());
         }
@@ -49,8 +63,14 @@ namespace Otus_5_stable_abstractions
         public void MoveNonVelocitibleObject()
         {
             // Arrange
-            var ship = new NonVelocitibleShip(position: new[]{12, 5}, velocity: new[]{-7, 3}, direction: 0, angularVelocity: 0);
-            
+            var ship = new UShip(
+                new Dictionary<string, object>
+                {
+                    {"Position", new[]{12, 5}},
+                    {"Direction", 0},
+                    {"AngularVelocity", 0}
+                });
+
             // Assert
             Assert.ThrowsException<ArgumentException>(() => new Move(new MovableAdapter(ship)).Execute());
         }
@@ -59,7 +79,14 @@ namespace Otus_5_stable_abstractions
         public void MoveNonMovableObject()
         {
             // Arrange
-            var ship = new NonMovableShip(position: new[]{12, 5}, velocity: new[]{-7, 3}, direction: 0, angularVelocity: 0);
+            var ship = new NonMovableShip(
+                new Dictionary<string, object>
+                {
+                    {"Position", new[]{12, 5}},
+                    {"Velocity", new[]{-7, 3}},
+                    {"Direction", 0},
+                    {"AngularVelocity", 0}
+                });
             
             // Assert
             Assert.ThrowsException<ArgumentException>(() => new Move(new MovableAdapter(ship)).Execute());

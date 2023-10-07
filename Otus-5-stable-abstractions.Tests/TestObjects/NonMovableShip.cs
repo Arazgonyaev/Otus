@@ -1,25 +1,21 @@
 using System;
+using System.Collections.Generic;
 
 namespace Otus_5_stable_abstractions.TestObjects;
 
 public class NonMovableShip : UShip
 {
-    public NonMovableShip(int[] position, int[] velocity, int direction, int angularVelocity, int directionsCount = 360) 
-        : base(position, velocity, direction, angularVelocity, directionsCount)
+    public NonMovableShip(Dictionary<string, object> properties) : base(properties)
     {
     }
     
     public override void SetProperty(string name, object value)
     {
-        switch (name)
-        {
-            case "Position":
-                throw new ArgumentException($"Incorrect property name '{name}' for {GetType().Name}");
-            case "Direction":
-                Direction = GetCorrectValue<int>(value);
-                break;
-            default:
-                throw new ArgumentException($"Incorrect property name '{name}' for {GetType().Name}");
-        }
+        CheckPropertyName(name);
+
+        if (name == "Position")
+            throw new ArgumentException($"Incorrect property name '{name}' for {GetType().Name}");
+
+        Properties[name] = value;
     }
 }

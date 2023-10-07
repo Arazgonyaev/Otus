@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Otus_5_stable_abstractions.Interfaces;
 using ArgumentException = System.ArgumentException;
 
@@ -5,54 +6,33 @@ namespace Otus_5_stable_abstractions;
 
 public class UShip : IUObject
 {
-    protected int[] Position;
-    protected int[] Velocity;
-    protected int Direction;
-    protected readonly int AngularVelocity;
-    protected readonly int DirectionsCount;
+    protected Dictionary<string, object> Properties;
+
     
-    public UShip(int[] position, int[] velocity, int direction, int angularVelocity, int directionsCount = 360)
+    public UShip(Dictionary<string, object> properties)
     {
-        Position = position;
-        Velocity = velocity;
-        Direction = direction;
-        AngularVelocity = angularVelocity;
-        DirectionsCount = directionsCount;
+        Properties = properties;
+        if (!Properties.ContainsKey("DirectionsCount"))
+            Properties["DirectionsCount"] = 360;
     }
 
     public virtual object GetProperty(string name)
     {
-        return name switch
-        {
-            "Position" => Position,
-            "Velocity" => Velocity,
-            "Direction" => Direction,
-            "AngularVelocity" => AngularVelocity,
-            "DirectionsCount" => DirectionsCount,
-            _ => throw new ArgumentException($"Incorrect property name '{name}' for {GetType().Name}")
-        };
+        CheckPropertyName(name);
+        
+        return Properties[name];
     }
 
     public virtual void SetProperty(string name, object value)
     {
-        switch (name)
-        {
-            case "Position":
-                Position = GetCorrectValue<int[]>(value);
-                break;
-            case "Direction":
-                Direction = GetCorrectValue<int>(value);
-                break;
-            default:
-                throw new ArgumentException($"Incorrect property name '{name}' for {GetType().Name}");
-        }
+        CheckPropertyName(name);
+
+        Properties[name] = value;
     }
 
-    protected T GetCorrectValue<T>(object value)
+    protected void CheckPropertyName(string name)
     {
-        if (value is T correctValue)
-            return correctValue;
-        
-        throw new ArgumentException($"Incorrect property value type for {GetType().Name}");
+        if (!Properties.ContainsKey(name))
+            throw new ArgumentException($"Incorrect property name '{name}' for {GetType().Name}");
     }
 }
