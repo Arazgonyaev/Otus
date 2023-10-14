@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Otus-7-exceptions/bin/Debug/net6.0/Otus-7-exceptions.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/Otus-7-exceptions",
+            "program": "${workspaceFolder}/Otus-9-factory/bin/Debug/net6.0/Otus-9-factory.dll",
+            "args": ["mergeSort", "input.txt", "output.txt"],
+            "cwd": "${workspaceFolder}/Otus-9-factory",
             "console": "internalConsole",
             "stopAtEntry": false
         },
