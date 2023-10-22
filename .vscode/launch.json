@@ -5,13 +5,24 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "Otus-12-adapter-app1",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Otus-9-factory/bin/Debug/net6.0/Otus-9-factory.dll",
-            "args": ["mergeSort", "input.txt", "output.txt"],
-            "cwd": "${workspaceFolder}/Otus-9-factory",
+            "program": "${workspaceFolder}/Otus-12-adapter-app1/bin/Debug/net6.0/Otus-12-adapter-app1.dll",
+            "args": ["input.txt", "output.txt"],
+            "cwd": "${workspaceFolder}/Otus-12-adapter-app1",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Otus-12-adapter-app2",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Otus-12-adapter-app2/bin/Debug/net6.0/Otus-12-adapter-app2.dll",
+            "args": ["generated_matrices.txt", "sum_matrix.txt"],
+            "cwd": "${workspaceFolder}/Otus-12-adapter-app2",
             "console": "internalConsole",
             "stopAtEntry": false
         },
