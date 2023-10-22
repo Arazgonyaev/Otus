@@ -14,8 +14,8 @@ public class UnitTest
     public void MatrixSummatorTest()
     {
         // Arrange
-        string inputFileName = "files\\input_test1.txt";
-        string outputFileName = "files\\output_test1.txt";
+        string inputFileName = "input_test1.txt";
+        string outputFileName = "output_test1.txt";
         File.WriteAllText(inputFileName, "2	4	5\n3	1	0\n\n3	1	0\n2	4	5");
         string expected = "5	5	5\n5	5	5";
     
@@ -34,7 +34,7 @@ public class UnitTest
     public void MatrixGeneratorTest()
     {
         // Arrange
-        string outputFileName = "files\\output_test2.txt";
+        string outputFileName = "output_test2.txt";
         int count = 3;
     
         // Act
@@ -64,8 +64,8 @@ public class UnitTest
     public void MatrixSummatorAdaptorTest()
     {
         // Arrange
-        string inputFileName = "files\\input_test3.txt";
-        string outputFileName = "files\\output_test3.txt";
+        string inputFileName = "input_test3.txt";
+        string outputFileName = "output_test3.txt";
         File.WriteAllText(inputFileName, "2	4	5\n3	1	0\n\n3	1	0\n2	4	5");
         string expected = "5	5	5\n5	5	5";
 
