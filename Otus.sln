@@ -23,6 +23,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-9-factory", "Otus-9-fa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-9-factory.Tests", "Otus-9-factory.Tests\Otus-9-factory.Tests.csproj", "{7B57A049-7A8F-40EB-B617-6810D7989C85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-12-adapter-app1", "Otus-12-adapter-app1\Otus-12-adapter-app1.csproj", "{A2FAB32A-2CE0-424B-91DA-807B9B85C948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-12-adapter-app2", "Otus-12-adapter-app2\Otus-12-adapter-app2.csproj", "{38AA3CA8-7DD8-4CFD-832F-7C59817A8704}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-12-adapter.Tests", "Otus-12-adapter.Tests\Otus-12-adapter.Tests.csproj", "{D875AE74-083B-4DB1-8DC4-2F3F89331670}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +75,18 @@ Global
 		{7B57A049-7A8F-40EB-B617-6810D7989C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B57A049-7A8F-40EB-B617-6810D7989C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B57A049-7A8F-40EB-B617-6810D7989C85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2FAB32A-2CE0-424B-91DA-807B9B85C948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FAB32A-2CE0-424B-91DA-807B9B85C948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FAB32A-2CE0-424B-91DA-807B9B85C948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FAB32A-2CE0-424B-91DA-807B9B85C948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38AA3CA8-7DD8-4CFD-832F-7C59817A8704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38AA3CA8-7DD8-4CFD-832F-7C59817A8704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38AA3CA8-7DD8-4CFD-832F-7C59817A8704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38AA3CA8-7DD8-4CFD-832F-7C59817A8704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D875AE74-083B-4DB1-8DC4-2F3F89331670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D875AE74-083B-4DB1-8DC4-2F3F89331670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D875AE74-083B-4DB1-8DC4-2F3F89331670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D875AE74-083B-4DB1-8DC4-2F3F89331670}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
