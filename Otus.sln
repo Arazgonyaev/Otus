@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-12-adapter-app2", "Otu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-12-adapter.Tests", "Otus-12-adapter.Tests\Otus-12-adapter.Tests.csproj", "{D875AE74-083B-4DB1-8DC4-2F3F89331670}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-14-vertical-scaling", "Otus-14-vertical-scaling\Otus-14-vertical-scaling.csproj", "{D57EF5A8-93B3-4C90-A8BC-A888EF5AB044}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-14-vertical-scaling.Tests", "Otus-14-vertical-scaling.Tests\Otus-14-vertical-scaling.Tests.csproj", "{DDD9FEA4-EF00-4983-B416-E1197E9FD372}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{D875AE74-083B-4DB1-8DC4-2F3F89331670}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D875AE74-083B-4DB1-8DC4-2F3F89331670}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D875AE74-083B-4DB1-8DC4-2F3F89331670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D57EF5A8-93B3-4C90-A8BC-A888EF5AB044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D57EF5A8-93B3-4C90-A8BC-A888EF5AB044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D57EF5A8-93B3-4C90-A8BC-A888EF5AB044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D57EF5A8-93B3-4C90-A8BC-A888EF5AB044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDD9FEA4-EF00-4983-B416-E1197E9FD372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD9FEA4-EF00-4983-B416-E1197E9FD372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD9FEA4-EF00-4983-B416-E1197E9FD372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD9FEA4-EF00-4983-B416-E1197E9FD372}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
