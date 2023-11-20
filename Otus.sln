@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-16-endpoint", "Otus-16
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-16-endpoint.Tests", "Otus-16-endpoint.Tests\Otus-16-endpoint.Tests.csproj", "{EA3081CF-0041-43FF-A24B-D6DAEC7BD68D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus-19-authorization", "Otus-19-authorization\Otus-19-authorization.csproj", "{C7DDE7BA-885D-4085-9116-CC5534B3D973}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{EA3081CF-0041-43FF-A24B-D6DAEC7BD68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA3081CF-0041-43FF-A24B-D6DAEC7BD68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA3081CF-0041-43FF-A24B-D6DAEC7BD68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7DDE7BA-885D-4085-9116-CC5534B3D973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7DDE7BA-885D-4085-9116-CC5534B3D973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7DDE7BA-885D-4085-9116-CC5534B3D973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7DDE7BA-885D-4085-9116-CC5534B3D973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
