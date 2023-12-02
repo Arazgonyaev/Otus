@@ -4,14 +4,14 @@ namespace Otus_14_vertical_scaling;
 
 public static class Behaviours
 {
-    public static Action<BehaviourOptions> Processing => (options) => 
+    public static Action<BehaviourOptions> Run => (options) => 
     {
         while(!options.IsStop) 
         {
             var c = options.Queue.Take();
             try 
             {
-                Console.WriteLine("Processing behaviour: execute command");
+                Console.WriteLine("Run behaviour: execute command");
                 c.Execute();
             }
             catch (Exception e) 
@@ -24,7 +24,9 @@ public static class Behaviours
     public static Action<BehaviourOptions> SoftStop(int? maxCommandsCount) => (options) => 
     {
         var processedCommands = 0;
-        while(!options.Queue.IsEmpty() && (maxCommandsCount is null || processedCommands < maxCommandsCount)) 
+        while(!options.IsStop // stop immediately if HardStopCommand received working in SoftStop behaviour
+            && !options.Queue.IsEmpty() 
+            && (maxCommandsCount is null || processedCommands < maxCommandsCount)) 
         {
             var c = options.Queue.Take();
             try 
@@ -37,6 +39,15 @@ public static class Behaviours
             {
                 Console.WriteLine($"Got Exception executing command: {e.Message}");
             }
+        }
+    };
+    
+    public static Action<BehaviourOptions> MoveTo(IQueue queueMoveTo) => (options) => 
+    {
+        while(!options.Queue.IsEmpty()) 
+        {
+            Console.WriteLine("MoveTo behaviour: move command to other queue");
+            queueMoveTo.Add(options.Queue.Take());
         }
     };
 }
