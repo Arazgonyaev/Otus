@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -11,10 +12,11 @@ public class UnitTest
     {
         // Arrange
         var queue = new BlockingCollectionQueue();
-        var myThread = new MyThread(queue, Behaviours.Processing);
+        var myThread = new MyThread(queue, Behaviours.Run);
         var resetEvent = new ManualResetEvent(false);
-        queue.Add(new WriteMessageCommand("Command 1"));
-        queue.Add(new WriteMessageCommand("Command 2"));
+        var log = new List<string>();
+        queue.Add(new WriteMessageCommand(log.Add, "Command 1"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 2"));
         queue.Add(new ActionCommand(() => { // sync command
             resetEvent.Set();
             resetEvent.WaitOne();
@@ -37,7 +39,11 @@ public class UnitTest
         resetEvent.Set();
         queue.Add(new HardStopCommand(myThread));
         myThread.Thread.Join(); // wait for myThread complete
-        Assert.IsFalse(myThread.Thread.IsAlive, "Thread must not be alive after stop command processing");
+        Assert.IsFalse(myThread.Thread.IsAlive, "Thread must not be alive after stop command processing"); 
+
+        // Check processing log
+        var expectedLog = new []{"Command 1", "Command 2"};
+        CollectionAssert.AreEqual(expectedLog, log, "Incorrect processing log");
     }
 
     [TestMethod]
@@ -45,12 +51,13 @@ public class UnitTest
     {
         // Arrange
         var queue = new BlockingCollectionQueue();
-        var myThread = new MyThread(queue, Behaviours.Processing);
-        queue.Add(new WriteMessageCommand("Command 1"));
-        queue.Add(new WriteMessageCommand("Command 2"));
+        var myThread = new MyThread(queue, Behaviours.Run);
+        var log = new List<string>();
+        queue.Add(new WriteMessageCommand(log.Add, "Command 1"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 2"));
         queue.Add(new HardStopCommand(myThread));
-        queue.Add(new WriteMessageCommand("Command 3"));
-        queue.Add(new WriteMessageCommand("Command 4"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 3"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 4"));
         var startCommand = new StartCommand(myThread);
         
         // Act
@@ -59,6 +66,8 @@ public class UnitTest
 
         // Assert
         Assert.AreEqual(2, queue.Count(), "Commands following HardStopCommand must not be processed");
+        var expectedLog = new []{"Command 1", "Command 2"};
+        CollectionAssert.AreEqual(expectedLog, log, "Incorrect processing log");
     }
 
     [TestMethod]
@@ -66,13 +75,14 @@ public class UnitTest
     {
         // Arrange
         var queue = new BlockingCollectionQueue();
-        var myThread = new MyThread(queue, Behaviours.Processing);
+        var myThread = new MyThread(queue, Behaviours.Run);
         var resetEvent = new ManualResetEvent(false);
-        queue.Add(new WriteMessageCommand("Command 1"));
-        queue.Add(new WriteMessageCommand("Command 2"));
+        var log = new List<string>();
+        queue.Add(new WriteMessageCommand(log.Add, "Command 1"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 2"));
         queue.Add(new MacroCommand(new SoftStopCommand(myThread), new ActionCommand(() => resetEvent.Set())));
-        queue.Add(new WriteMessageCommand("Command 3"));
-        queue.Add(new WriteMessageCommand("Command 4"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 3"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 4"));
         var startCommand = new StartCommand(myThread);
         
         // Act
@@ -82,6 +92,8 @@ public class UnitTest
 
         // Assert
         Assert.IsTrue(queue.IsEmpty(), "Commands following SoftStopCommand must be processed");
+        var expectedLog = new []{"Command 1", "Command 2", "Command 3", "Command 4"};
+        CollectionAssert.AreEqual(expectedLog, log, "Incorrect processing log");
     }
 
     [TestMethod]
@@ -90,15 +102,16 @@ public class UnitTest
         // Arrange
         var maxCommandsCount = 3;
         var queue = new BlockingCollectionQueue();
-        var myThread = new MyThread(queue, Behaviours.Processing);
+        var myThread = new MyThread(queue, Behaviours.Run);
         var resetEvent = new ManualResetEvent(false);
-        queue.Add(new WriteMessageCommand("Command 1"));
-        queue.Add(new WriteMessageCommand("Command 2"));
+        var log = new List<string>();
+        queue.Add(new WriteMessageCommand(log.Add, "Command 1"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 2"));
         queue.Add(new MacroCommand(new SoftStopCommand(myThread, maxCommandsCount), new ActionCommand(() => resetEvent.Set())));
-        queue.Add(new WriteMessageCommand("Command 3"));
-        queue.Add(new WriteMessageCommand("Command 4"));
-        queue.Add(new WriteMessageCommand("Command 5"));
-        queue.Add(new WriteMessageCommand("Command 6"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 3"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 4"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 5"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 6"));
         var startCommand = new StartCommand(myThread);
         
         // Act
@@ -108,5 +121,65 @@ public class UnitTest
 
         // Assert
         Assert.AreEqual(1, queue.Count(), $"Only {maxCommandsCount} commands following SoftStopCommand must be processed");
+        var expectedLog = new []{"Command 1", "Command 2", "Command 3", "Command 4", "Command 5"};
+        CollectionAssert.AreEqual(expectedLog, log, "Incorrect processing log");
+    }
+
+    [TestMethod]
+    public void MoveToCommand()
+    {
+        // Arrange
+        var queue = new BlockingCollectionQueue();
+        var newQueue = new BlockingCollectionQueue();
+        var myThread = new MyThread(queue, Behaviours.Run);
+        var resetEvent = new ManualResetEvent(false);
+        var log = new List<string>();
+        queue.Add(new WriteMessageCommand(log.Add, "Command 1"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 2"));
+        queue.Add(new MacroCommand(new MoveToCommand(myThread, newQueue), new ActionCommand(() => resetEvent.Set())));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 3"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 4"));
+        var startCommand = new StartCommand(myThread);
+        
+        // Act
+        startCommand.Execute();
+        resetEvent.WaitOne();
+        myThread.Thread.Join(); // wait for myThread complete 
+
+        // Assert
+        Assert.IsTrue(queue.IsEmpty(), "Queue must be empty");
+        Assert.AreEqual(2, newQueue.Count(), "Commands following MoveToCommand must be moved to newQueue");
+        var expectedLog = new []{"Command 1", "Command 2"};
+        CollectionAssert.AreEqual(expectedLog, log, "Incorrect processing log");
+    }
+
+    [TestMethod]
+    public void RunCommand()
+    {
+        // Arrange
+        var maxCommandsCount = 2;
+        var queue = new BlockingCollectionQueue();
+        var myThread = new MyThread(queue, Behaviours.Run);
+        var resetEvent = new ManualResetEvent(false);
+        var log = new List<string>();
+        queue.Add(new WriteMessageCommand(log.Add, "Command 1"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 2"));
+        queue.Add(new SoftStopCommand(myThread, maxCommandsCount)); // process 2 next commands only
+        queue.Add(new WriteMessageCommand(log.Add, "Command 3"));
+        queue.Add(new MacroCommand(new RunCommand(myThread), new ActionCommand(() => resetEvent.Set()))); // process till stop command received
+        queue.Add(new WriteMessageCommand(log.Add, "Command 4"));
+        queue.Add(new WriteMessageCommand(log.Add, "Command 5"));
+        queue.Add(new HardStopCommand(myThread));
+        var startCommand = new StartCommand(myThread);
+        
+        // Act
+        startCommand.Execute();
+        resetEvent.WaitOne();
+        myThread.Thread.Join(); // wait for myThread complete 
+
+        // Assert
+        Assert.IsTrue(queue.IsEmpty(), "All commands must be processed");
+        var expectedLog = new []{"Command 1", "Command 2", "Command 3", "Command 4", "Command 5"};
+        CollectionAssert.AreEqual(expectedLog, log, "Incorrect processing log");
     }
 }
