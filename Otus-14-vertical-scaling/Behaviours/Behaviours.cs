@@ -11,12 +11,11 @@ public static class Behaviours
             var c = options.Queue.Take();
             try 
             {
-                Console.WriteLine("Run behaviour: execute command");
                 c.Execute();
             }
-            catch (Exception e) 
+            catch (BaseException e) 
             {
-                Console.WriteLine($"Got Exception executing command: {e.Message}");
+                ExceptionHandler.Handle(e, c).Execute();
             }
         }
     };
@@ -31,13 +30,12 @@ public static class Behaviours
             var c = options.Queue.Take();
             try 
             {
-                Console.WriteLine("SoftStop behaviour: execute command");
                 c.Execute();
                 processedCommands++;
             }
-            catch (Exception e) 
+            catch (BaseException e) 
             {
-                Console.WriteLine($"Got Exception executing command: {e.Message}");
+                ExceptionHandler.Handle(e, c).Execute();
             }
         }
     };
@@ -46,7 +44,6 @@ public static class Behaviours
     {
         while(!options.Queue.IsEmpty()) 
         {
-            Console.WriteLine("MoveTo behaviour: move command to other queue");
             queueMoveTo.Add(options.Queue.Take());
         }
     };
