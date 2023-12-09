@@ -38,19 +38,19 @@ public class ExceptionHandler
         (command, exception) => new WriteMessageToLogCommand(logger, "ERROR while executing command " + 
             $"{command.GetType().Name}: {exception.Message}");
 
-    public static Func<ICommand, BaseException, ICommand> QueueWriteLog(ILogger logger, BlockingCollection<ICommand> queue) => 
+    public static Func<ICommand, BaseException, ICommand> QueueWriteLog(ILogger logger, IQueue queue) => 
         (command, exception) => new AddCommandToQueue (
             queue, 
             new WriteMessageToLogCommand(logger, "ERROR while executing command " + 
                 $"{command.GetType().Name}: {exception.Message}"));
     
-    public static Func<ICommand, BaseException, ICommand> QueueCommand(BlockingCollection<ICommand> queue) => 
+    public static Func<ICommand, BaseException, ICommand> QueueCommand(IQueue queue) => 
         (command, exception) => new AddCommandToQueue (queue, command);
 
-    public static Func<ICommand, BaseException, ICommand> QueueQueueCommand(BlockingCollection<ICommand> queue) => 
+    public static Func<ICommand, BaseException, ICommand> QueueQueueCommand(IQueue queue) => 
         (command, exception) => new AddCommandToQueue (queue, new AddCommandToQueue (queue, command));
 
-    public static Func<ICommand, BaseException, ICommand> RepeatCommandOrWriteLog(ILogger logger, BlockingCollection<ICommand> queue) => 
+    public static Func<ICommand, BaseException, ICommand> RepeatCommandOrWriteLog(ILogger logger, IQueue queue) => 
         (command, exception) => 
             command is RepeatableCommand repeatable && repeatable.RemainingTryCount > 0
                 ? new AddCommandToQueue(queue, repeatable)

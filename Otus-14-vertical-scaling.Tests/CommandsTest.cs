@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Otus_14_vertical_scaling.Tests;
 
 [TestClass]
-public class UnitTest
+public class CommandsTest
 {
     [TestMethod]
     public void StartCommand()
@@ -126,7 +126,7 @@ public class UnitTest
     }
 
     [TestMethod]
-    public void MoveToCommand()
+    public void MoveCommandToQueue()
     {
         // Arrange
         var queue = new BlockingCollectionQueue();
@@ -136,7 +136,7 @@ public class UnitTest
         var log = new List<string>();
         queue.Add(new WriteMessageCommand(log.Add, "Command 1"));
         queue.Add(new WriteMessageCommand(log.Add, "Command 2"));
-        queue.Add(new MacroCommand(new MoveToCommand(myThread, newQueue), new ActionCommand(() => resetEvent.Set())));
+        queue.Add(new MacroCommand(new MoveCommandToQueue(myThread, newQueue), new ActionCommand(() => resetEvent.Set())));
         queue.Add(new WriteMessageCommand(log.Add, "Command 3"));
         queue.Add(new WriteMessageCommand(log.Add, "Command 4"));
         var startCommand = new StartCommand(myThread);
