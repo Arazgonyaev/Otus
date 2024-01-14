@@ -3,13 +3,13 @@
 public class CommandFactory : ICommandFactory
 {
     public string OperationId {get;}
-    private Func<IObject, string, ICommand> factory;
+    private Func<IUObject, string, ICommand> factory;
 
-    public CommandFactory(string operationId, Func<IObject, string, ICommand> factory)
+    public CommandFactory(string operationId, Func<IUObject, string, ICommand> factory)
     {
         OperationId = operationId;
         this.factory = factory;
     }
 
-    public ICommand Create(IObject gameObject, string jsonArgs) => factory(gameObject, jsonArgs);
+    public ICommand Create(IUObject gameObject, string jsonArgs) => factory(gameObject, jsonArgs);
 }

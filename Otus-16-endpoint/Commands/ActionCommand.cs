@@ -2,10 +2,10 @@
 
 public class ActionCommand : ICommand
 {
-    private readonly IObject gameObject;
-    private readonly Action<IObject> action;
+    private readonly IUObject gameObject;
+    private readonly Action<IUObject> action;
 
-    public ActionCommand(IObject gameObject, Action<IObject> action)
+    public ActionCommand(IUObject gameObject, Action<IUObject> action)
     {
         this.gameObject = gameObject;
         this.action = action;

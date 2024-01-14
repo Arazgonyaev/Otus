@@ -11,22 +11,26 @@ public static class Bootstrapper
         -H 'Content-Type: application/json' \
         -d '"{\"NewState\": \"Active\"}"'
         */
-        services.AddSingleton<ICommandFactory>(new CommandFactory("ChangeState", ChangeState));
+        services.AddSingleton<ICommandFactory>(new CommandFactory("ChangeState", (obj, args) => 
+            new ActionCommand(obj, (_) => obj.SetProperty("State", args.GetArg("NewState")))));
 
-        /* Writes object state based on template. Sample:
+        /* Writes object properties to console. Sample:
         curl -X 'POST' \
-        'http://localhost:5000/message/Game1/Object2/PrintState' \
+        'http://localhost:5000/message/Game1/Object2/PrintObject' \
         -H 'accept: *\/*' \
         -H 'Content-Type: application/json' \
-        -d '"{\"Tmpl\": \"Current state: {0}\"}"'
+        -d '""'
         Output: Current state: Active 
         */
-        services.AddSingleton<ICommandFactory>(new CommandFactory("PrintState", PrintState));
-    }
+        services.AddSingleton<ICommandFactory>(new CommandFactory("PrintObject", (obj, args) => 
+            new ActionCommand(obj, (o)=>{Console.WriteLine(o.Stringify());})));
 
-    private static Func<IObject, string, ICommand> ChangeState => (obj, args) => 
-        new ActionCommand(obj, (_) => obj.ObjectState = args.GetArg("NewState"));
-    
-    private static Func<IObject, string, ICommand> PrintState => (obj, args) => 
-        new ActionCommand(obj, (o)=>{Console.WriteLine(string.Format(args.GetArg("Tmpl"), o.ObjectState));});
+        // and so on ...
+        services.AddSingleton<ICommandFactory>(new CommandFactory("StartMove", (obj, args) => 
+            new StartMoveCommand(new MovableAdapter(obj), args.GetArg("InitVelocity").Split(",").Select(int.Parse).ToArray())));
+        
+        services.AddSingleton<ICommandFactory>(new CommandFactory("StopMove", (obj, args) => new StopMoveCommand(new MovableAdapter(obj))));
+        
+        services.AddSingleton<ICommandFactory>(new CommandFactory("Shot", (obj, args) => new ShotCommand(new ShotableAdapter(obj))));
+    }
 }
