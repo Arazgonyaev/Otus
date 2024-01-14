@@ -4,7 +4,7 @@ public interface IGame
 {
     string GameId {get;}
 
-    void AddObject(IObject gameObject);
+    void AddObject(IUObject gameObject);
 
     void AddCommand(ICommandFactory factory, string objectId, string jsonArgs);
 }

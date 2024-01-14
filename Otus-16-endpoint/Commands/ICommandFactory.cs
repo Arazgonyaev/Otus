@@ -3,5 +3,5 @@
 public interface ICommandFactory
 {
     string OperationId {get;}
-    ICommand Create(IObject gameObject, string jsonArgs);
+    ICommand Create(IUObject gameObject, string jsonArgs);
 }

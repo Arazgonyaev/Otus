@@ -1,12 +1,39 @@
-﻿namespace Otus_16_endpoint;
+﻿using System.Collections;
 
-public class SimpleObject : IObject
+namespace Otus_16_endpoint;
+
+public class UShip : IUObject
 {
-    public string ObjectId { get; }
-    public string ObjectState { get; set; }
+    protected Dictionary<string, object> Properties;
 
-    public SimpleObject(string objectId)
+    
+    public UShip(Dictionary<string, object> properties)
     {
-        ObjectId = objectId;
+        Properties = properties;
+    }
+
+    public virtual object GetProperty(string name)
+    {
+        CheckPropertyName(name);
+        
+        return Properties[name];
+    }
+
+    public virtual void SetProperty(string name, object value)
+    {
+        CheckPropertyName(name);
+
+        Properties[name] = value;
+    }
+
+    public string Stringify()
+    {
+        return string.Join("\n", Properties.Select(p => $"{p.Key}:\t{(p.Value is IEnumerable<int> e ? "["+string.Join(", ", e)+"]" : p.Value)}"));
+    }
+
+    protected void CheckPropertyName(string name)
+    {
+        if (!Properties.ContainsKey(name))
+            throw new ArgumentException($"Incorrect property name '{name}' for {GetType().Name}");
     }
 }
