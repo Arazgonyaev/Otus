@@ -1,11 +1,11 @@
-﻿namespace Otus_7_exceptions;
+﻿namespace Otus_project_server;
 
-public class WriteMessageToLog : ICommand
+public class WriteMessageToLogCommand : ICommand
 {
     private readonly ILogger logger;
     private readonly string message;
 
-    public WriteMessageToLog(ILogger logger, string message)
+    public WriteMessageToLogCommand(ILogger logger, string message)
     {
         this.logger = logger;
         this.message = message;

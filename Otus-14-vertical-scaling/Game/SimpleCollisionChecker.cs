@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace Otus_14_vertical_scaling;
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Otus_14_vertical_scaling;
+﻿namespace Otus_project_server;
 
 public class ExceptionHandler
 {

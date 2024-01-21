@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Otus_14_vertical_scaling;
+﻿namespace Otus_14_vertical_scaling;
 
 public class WriteMessageToLogCommand : ICommand
 {
