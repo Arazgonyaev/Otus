@@ -1,4 +1,4 @@
-﻿namespace Otus_7_exceptions;
+﻿namespace Otus_project_server;
 
 public interface ILogger
 {

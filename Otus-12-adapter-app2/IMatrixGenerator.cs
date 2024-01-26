@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Otus_12_adapter_app2;
+﻿namespace Otus_12_adapter_app2;
 
 public interface IMatrixGenerator
 {

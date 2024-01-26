@@ -1,4 +1,4 @@
-﻿namespace Otus_16_endpoint;
+﻿namespace Otus_project_server;
 
 public class UShip : IUObject
 {
