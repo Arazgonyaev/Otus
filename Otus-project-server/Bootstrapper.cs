@@ -29,8 +29,10 @@ public static class Bootstrapper
         services.AddSingleton<ICommandFactory>(new CommandFactory("StartMove", (obj, args) => 
             new StartMoveCommand(new MovableAdapter(obj), args.GetArg("InitVelocity").Split(",").Select(int.Parse).ToArray())));
         
-        services.AddSingleton<ICommandFactory>(new CommandFactory("StopMove", (obj, args) => new StopMoveCommand(new MovableAdapter(obj))));
+        services.AddSingleton<ICommandFactory>(new CommandFactory("StopMove", (obj, args) => 
+            new StopMoveCommand(new MovableAdapter(obj))));
         
-        services.AddSingleton<ICommandFactory>(new CommandFactory("Shot", (obj, args) => new ShotCommand(new ShotableAdapter(obj))));
+        services.AddSingleton<ICommandFactory>(new CommandFactory("Shot", (obj, args) => 
+            new ShotCommand(new ShotableAdapter(obj))));
     }
 }

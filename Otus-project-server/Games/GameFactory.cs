@@ -18,7 +18,7 @@ public static class GameFactory
                 {"State", "InitState"},
                 {"Position", new[]{rnd.Next(800), rnd.Next(600)}},
                 {"Velocity", new[]{rnd.Next(-30, 30), rnd.Next(-30, 30)}},
-                {"PreviousPosition", new[]{rnd.Next(0, 0), rnd.Next(0, 0)}},
+                {"PreviousPosition", new[]{0, 0}},
                 {"ShellCnt", 10},
             })));
         

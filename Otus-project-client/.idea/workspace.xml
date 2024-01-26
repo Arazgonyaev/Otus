@@ -2,94 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a86a240-b5eb-46c2-a164-d4483c5328b3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Controllers/GameController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Controllers/TokenController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Models/UserCredentials.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Otus-project-authorization.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Services/GameService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Services/IGameService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Services/IJwtService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Services/IUserService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Services/JwtService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/Services/UserService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-authorization/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/client.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server.Tests/GameCommandTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server.Tests/MessageRegistratorTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server.Tests/Otus-project-server.Tests.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server.Tests/СheckСollisionsTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Behaviours/BehaviourOptions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Behaviours/Behaviours.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Bootstrapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/ActionCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/AddCommandToQueue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/CommandFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/CreteObjectNotify.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/ICommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/ICommandFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/InterpretCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/MacroCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/MoveObjectNotify.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/ObjectsNotify.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/RepeatableCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/SoftStopCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/StartCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/WriteMessageCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Commands/WriteMessageToLogCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Controllers/MessageController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Exceptions/BaseException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Exceptions/ConsoleLogger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Exceptions/Exception1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Exceptions/ExceptionHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Exceptions/ILogger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Exceptions/ListLogger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Extensions/Extensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/Game2DField.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/GameCommands/MoveCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/GameCommands/ShotCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/GameCommands/StartMoveCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/GameCommands/StopMoveCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/GameCommands/СheckСollisionsCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/GameFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/GameThread.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/ICollisionChecker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/IField.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/IGame.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/IMovable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/IShotable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/IUObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/MovableAdapter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/ShotableAdapter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/SimpleCollisionChecker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/SimpleGame.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Games/SimpleObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Otus-project-server.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Queues/BlockingCollectionQueue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Queues/IQueue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/ServiceConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Services/HtttpNotifier.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Services/IMessageRegistrator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Services/INotifier.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/Services/MessageRegistrator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Otus-project-server/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Otus-12-adapter-app2/IMatrixGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus-12-adapter-app2/IMatrixGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Otus-14-vertical-scaling/Commands/WriteMessageToLogCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus-14-vertical-scaling/Commands/WriteMessageToLogCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Otus-14-vertical-scaling/Exceptions/ExceptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus-14-vertical-scaling/Exceptions/ExceptionHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Otus-14-vertical-scaling/Game/SimpleCollisionChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus-14-vertical-scaling/Game/SimpleCollisionChecker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Otus-16-endpoint/Games/SimpleObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus-16-endpoint/Games/SimpleObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Otus-7-exceptions/Commands/WriteMessageToLog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus-7-exceptions/Commands/WriteMessageToLog.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Otus-7-exceptions/ILogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus-7-exceptions/ILogger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Otus.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Otus-project-server/Bootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus-project-server/Bootstrapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Otus-project-server/Games/GameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Otus-project-server/Games/GameFactory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
